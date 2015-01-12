@@ -12,30 +12,30 @@ It's nice to categorize your posts so you can browse related posts more easily.
 ## Example
 The list of categories for a post in the header above is generated like this:
 
-~~~~~~~~~~~~
+{% highlight liquid %}
 {{ "{% if page.categories != empty" }} %}
-<p class="text-muted">Filed under {{ "{{ page.categories | category_links" }}}}</p>
+<p class="text-muted">Filed under {{ "{{ page.categories | category_links" }} }} </p>
 {{ "{% endif" }} %}
-~~~~~~~~~~~~
+{% endhighlight %}
 
 You can link to a single existing category page, for example,
 
-~~~~~~~~~~~~
+{% highlight liquid %}
 <a href="{{ "{{ 'html' | category_link " }}}}">HTML</a>
-~~~~~~~~~~~~
+{% endhighlight %}
 
 will produce this link: <a href="{{ 'html' | category_link }}">HTML</a>.
 
 We can make a list of all categories like this:
 
-~~~~~~~~~~~~
+{% highlight liquid %}
 <ul>
 {{ "{% assign sorted_categories = site.categories | sort" }} %}
 {{ "{% for category in sorted_categories" }} %}
 <li><a href="{{ "{{ category | first | category_link" }}}}">{{ "{{ category | first | capitalize" }}}}</a></li>
 {{ "{% endfor" }} %}
 </ul>
-~~~~~~~~~~~~
+{% endhighlight %}
 
 <ul>
 {% assign sorted_categories = site.categories | sort %}
